@@ -26,4 +26,6 @@ View the most frequently requested successful sequence:
 GET /actuator/statistics
 ```
 
+Interactive API documentation is available at [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html). The OpenAPI document is served from `/v3/api-docs`.
+
 Run the test suite with `./mvnw.cmd verify`, or start the container with `docker compose up --build`.
