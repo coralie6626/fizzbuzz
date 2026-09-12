@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import java.util.List;
 
 import com.example.fizzbuzz.application.DefaultFizzBuzzRequest;
-import com.example.fizzbuzz.application.DefaultFizzBuzzService;
+import com.example.fizzbuzz.application.FizzBuzzUseCase;
 import jakarta.validation.Validator;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +22,9 @@ class FizzbuzzApplicationTests {
 	@Autowired
 	private Validator validator;
 
+	@Autowired
+	private FizzBuzzUseCase fizzBuzzUseCase;
+
 	@Test
 	void contextLoads() {
 		assertNotNull(applicationContext);
@@ -29,9 +32,7 @@ class FizzbuzzApplicationTests {
 
 	@Test
 	void generatesNumbersAndReplacementsForBothDivisors() {
-		DefaultFizzBuzzService service = new DefaultFizzBuzzService();
-
-		List<String> result = service.generate(new DefaultFizzBuzzRequest(3, 5, 15, "fizz", "buzz"));
+		List<String> result = fizzBuzzUseCase.generate(new DefaultFizzBuzzRequest(3, 5, 15, "fizz", "buzz"));
 
 		assertEquals(List.of(
 				"1", "2", "fizz", "4", "buzz", "fizz", "7", "8", "fizz", "buzz",
